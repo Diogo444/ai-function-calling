@@ -1,3 +1,20 @@
-<div class="content-button">
-    <button class="background-button" (click)="changerFond()" type="button">Mettre le fond en vert</button>
-</div>
+<main class="chat" aria-labelledby="chat-title">
+  <header class="chat__header"><h1 id="chat-title">Assistant Gemini</h1><p>Posez votre question simplement.</p></header>
+  <section class="chat__messages" aria-live="polite" aria-label="Conversation">
+    @if (messages().length === 0) { <p class="chat__empty">Commencez la conversation en écrivant un message.</p> }
+    @for (item of messages(); track $index) {
+      <div class="message" [class.message--user]="item.role === 'user'" [class.message--assistant]="item.role === 'assistant'">
+        <span class="message__author">{{ item.role === 'user' ? 'Vous' : 'Gemini' }}</span><p>{{ item.content }}</p>
+      </div>
+    }
+    @if (isLoading()) { <p class="chat__loading">Gemini réfléchit…</p> }
+  </section>
+  @if (error()) { <p class="chat__error" role="alert">{{ error() }}</p> }
+  <form class="chat__form" (submit)="$event.preventDefault(); demanderGemini()">
+    <label for="message">Votre message</label>
+    <div class="chat__composer">
+      <textarea id="message" rows="1" [value]="message()" (input)="updateMessage($event)" placeholder="Écrivez votre message…" [disabled]="isLoading()"></textarea>
+      <button type="submit" [disabled]="isLoading() || !message().trim()">Envoyer</button>
+    </div>
+  </form>
+</main>

@@ -1,13 +1,29 @@
 .content {
-    width: 100vw;
-    height: 100vh;
-    background-color: #f1f1f1;
-    display: flex;
-    
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #170e19;
+  display: flex;
 }
 
-app-chat,
+app-chat {
+  width: 50%;
+  flex: 0 0 50%;
+  min-width: 0;
+}
+
 app-preview {
-    flex: 1;
-    min-width: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 700px) {
+  app-chat {
+    width: 100%;
+    flex-basis: 100%;
+  }
+  app-preview {
+    display: none;
+  }
 }

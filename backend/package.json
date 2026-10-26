@@ -2,13 +2,14 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "le backend de l'application d'IA function calling",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@google/genai": "^2.31.0",
+    "cors": "^2.8.6",
     "dotenv": "^18.0.9",
     "express": "^5.3.0"
   },
