@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "le backend de l'application d'IA function calling",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@google/genai": "^2.31.0",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0"
+  },
+  "allowScripts": {
+    "@google/genai@2.31.0": true,
+    "protobufjs@7.6.6": true
+  }
+}
