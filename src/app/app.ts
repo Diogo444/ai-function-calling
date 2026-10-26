@@ -1,12 +1,12 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Preview } from './components/preview/preview';
+import { Chat } from './components/chat/chat';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [Preview, Chat],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly title = signal('ai-function-calling');
 }

@@ -1,0 +1,30 @@
+.content-button {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.background-button {
+    padding: 0.7rem 1.1rem;
+    border: 0;
+    border-radius: 0.5rem;
+    background-color: #2563eb;
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.background-button:hover {
+    background-color: #1d4ed8;
+}
+
+.background-button:active {
+    transform: translateY(1px);
+}
+
+.background-button:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}

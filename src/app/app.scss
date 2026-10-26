@@ -1,0 +1,13 @@
+.content {
+    width: 100vw;
+    height: 100vh;
+    background-color: #f1f1f1;
+    display: flex;
+    
+}
+
+app-chat,
+app-preview {
+    flex: 1;
+    min-width: 0;
+}
