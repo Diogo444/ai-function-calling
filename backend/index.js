@@ -69,6 +69,21 @@ app.post("/api/chat", async (req, res) => {
   }
 })
 
+app.post("/api/chat/result", async (req, res) => {
+  const { interactionId, callId, name, success, couleur } = req.body;
+
+  console.log("Résultat reçu depuis Angular :", {
+    interactionId,
+    callId,
+    name,
+    success,
+    couleur
+  });
+
+  res.json({ message: "Résultat reçu par Express" });
+});
+
+
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running on port ${process.env.PORT || 3000}`);
 });
