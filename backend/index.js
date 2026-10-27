@@ -80,7 +80,33 @@ app.post("/api/chat/result", async (req, res) => {
     couleur
   });
 
-  res.json({ message: "Résultat reçu par Express" });
+  const reponseFinale = await ai.interactions.create({
+    model: "gemini-3.1-flash-lite",
+    previous_interaction_id: interactionId,
+    tools: [changerFond],
+    input: [
+      {
+        type: "function_result",
+        name: name,
+        call_id: callId,
+        result: [
+          {
+            type: "text",
+            text: JSON.stringify({
+              success: success,
+              couleur: couleur
+            })
+          }
+        ]
+      }
+    ]
+  });
+
+  console.log("Réponse finale de Gemini :", reponseFinale.output_text);
+
+  return res.json({
+    message: reponseFinale.output_text ?? ""
+  });
 });
 
 

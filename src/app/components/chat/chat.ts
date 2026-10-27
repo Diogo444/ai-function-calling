@@ -69,6 +69,12 @@ export class Chat {
           }).subscribe({
             next: (data) =>{
               console.log("Réponse du backend" + data.message)
+              if (data.message) {
+        this.messages.update((messages) => [
+          ...messages,
+          { content: data.message, role: 'assistant' }
+        ]);
+      }
             }
           })
         }
