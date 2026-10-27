@@ -59,6 +59,18 @@ export class Chat {
           /^#[0-9a-fA-F]{6}$/.test(couleur)
         ) {
           this.previewService.changerFond(couleur);
+
+          this.api.envoyerResultat({
+            interactionId: result.interactionId,
+            callId: result.action.id,
+            name: result.action.name,
+            couleur: couleur,
+            success: true
+          }).subscribe({
+            next: (data) =>{
+              console.log("Réponse du backend" + data.message)
+            }
+          })
         }
       }
     },

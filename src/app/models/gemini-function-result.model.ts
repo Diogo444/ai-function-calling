@@ -4,6 +4,7 @@ export interface GeminiFunctionResult {
   name: string;
   success: boolean;
   couleur: string;
+
 }
 
 export interface GeminiFunctionResultResponse {

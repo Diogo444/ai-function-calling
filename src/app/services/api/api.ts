@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import { GeminiResponse } from '../../models/gemini-response.model';
-import { GeminiFunctionResult } from '../../models/gemini-function-result.model';
+import { GeminiFunctionResult, GeminiFunctionResultResponse } from '../../models/gemini-function-result.model';
 
 @Service()
 export class Api {
@@ -13,6 +13,6 @@ export class Api {
   }
 
   envoyerResultat(resultat: GeminiFunctionResult){
-    return this.http.post<GeminiFunctionResult>(this.apiURL + "/api/chat/result", resultat)
+    return this.http.post<GeminiFunctionResultResponse>(this.apiURL + "/api/chat/result", resultat)
   }
 }
