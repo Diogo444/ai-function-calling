@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
+import { GeminiResponse } from '../../models/gemini-response.model';
 
 @Service()
 export class Api {
@@ -7,6 +8,6 @@ export class Api {
   readonly http = inject(HttpClient)
 
   demandeGemini(prompt: string){
-    return this.http.post<{ response: string }>(this.apiURL + "/api/chat", { prompt })
+    return this.http.post<GeminiResponse>(this.apiURL + "/api/chat", { prompt })
   }
 }

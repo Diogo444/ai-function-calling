@@ -5,7 +5,7 @@ export class Preview {
     private readonly color = signal('#000000');
     readonly backgroundColor = this.color.asReadonly();
 
-    changerFond(){
-        this.color.set('#ff0000');
+    changerFond(couleur: string){
+        this.color.set(couleur);
     }
 }

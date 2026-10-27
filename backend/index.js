@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import cors from "cors";
 import "dotenv/config";
 import { GoogleGenAI } from '@google/genai';
@@ -12,15 +12,41 @@ const ai = new GoogleGenAI({
 
 app.use(express.json());
 
+const changerFond = {
+  type: "function",
+  name: "changerFond",
+  description: "Change la couleur de fond de la zone de prévisualisation de l'application.",
+  parameters: {
+    type: "object",
+    properties: {
+      couleur: {
+        type: "string",
+        description: "Couleur CSS au format hexadécimal, par exemple #FF0000 pour rouge."
+      }
+    },
+    required: ["couleur"]
+  }
+};
+
 async function demanderGemini(prompt) {
   console.log("envoie de la demande")
   const reponse = await ai.interactions.create({
     model: "gemini-3.1-flash-lite",
-    input: prompt
+    input: prompt,
+    tools: [changerFond]
   })
+  console.log(reponse.steps);
   console.log(reponse.output_text);
 
-  return reponse.output_text
+  const appelFonction = reponse.steps.find(
+    element => element.type === "function_call"
+  );
+
+  return {
+    message: reponse.output_text ?? "",
+    action: appelFonction ?? null,
+    interactionId: reponse.id
+  };
 }
 
 app.get("/", (req, res) => {
