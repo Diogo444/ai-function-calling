@@ -1,3 +1,6 @@
-<div class="content-preview" [style.background]="previewService.backgroundColor()">
-    <p>c'est un exemple de la preview</p>
-</div>
+<section class="content-preview" [style.background-color]="previewService.backgroundColor()" [style.color]="textColor(previewService.backgroundColor())" aria-label="Prévisualisation">
+  <p>{{ previewService.previewText() }}</p>
+  @for (button of previewService.buttons(); track button.id) {
+    <button type="button" [style.background-color]="button.couleur" [style.color]="textColor(button.couleur)">{{ button.texte }}</button>
+  }
+</section>

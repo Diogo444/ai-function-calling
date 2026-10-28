@@ -1,19 +1,11 @@
 export interface GeminiAction {
   id: string;
-  type: 'function_call';
   name: string;
-  arguments: {
-    couleur: string;
-
-  };
+  arguments: unknown;
 }
-
-export interface GeminiResult {
+export interface GeminiTurn {
   message: string;
-  action: GeminiAction | null;
-  interactionId: string
+  actions: GeminiAction[];
+  interactionId: string;
 }
-
-export interface GeminiResponse {
-  response: GeminiResult;
-}
+export interface GeminiResponse { response: GeminiTurn }
